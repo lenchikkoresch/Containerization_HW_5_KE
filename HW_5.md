@@ -59,7 +59,37 @@ docker ps
 ## Задание 2*:
 1) создать кластер и мастер и слейв ноды
 2) задеплоить на ноду несколько экземляров какого0нибудь контейнера, например nginx
+
+Master:
+```sh
+docker swarm init
+docker node ls
+```
+Slave:
+```sh
+docker swarm join --token SWMTKN-1-2p63cvnjbv6btkk5mgzcofx5v5tthcvixq0ylhlrwsgaelnwv3-3nz
+tme6bfg811qdgy4rdkwynv 172.17.0.3:2377
+```
+
+
+2) задеплоить на ноду несколько экземляров какого-нибудь контейнера, например nginx
+
+Master:
+```sh
+docker service create --name nginx --label slave --replicas 4 nginx:alpine
+docker ps
+```
+
+Slave:
+```sh
+docker ps
+```
+
 3) обязательно проверить и зафиксировать результаты, чтобы можно было выслать преподавателю для проверки
+
+![Alt text](Screenshot_20230703_235128.png)
+![Alt text](Screenshot_20230704_000542.png)
+
 
 
 
